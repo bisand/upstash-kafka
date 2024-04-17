@@ -21,6 +21,14 @@
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "sed -i '/^ZSH_THEME/c\\ZSH_THEME=\"bira\"' ~/.zshrc",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"DavidAnson.vscode-markdownlint",
+				"ms-dotnettools.csdevkit"
+			]
+		}
+	},
 
 	// Configure tool-specific properties.
 	// "customizations": {},
