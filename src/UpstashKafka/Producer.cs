@@ -32,6 +32,7 @@ namespace UpstashKafka
         /// <summary>
         /// Produce a message.
         /// </summary>
+        /// <typeparam name="TMessage"></typeparam>
         /// <param name="topic"></param>
         /// <param name="message"></param>
         /// <param name="opts"></param>
@@ -39,20 +40,7 @@ namespace UpstashKafka
         /// <exception cref="NotImplementedException"></exception>
         public async Task<ProduceResponse> ProduceAsync<TMessage>(string topic, TMessage message, ProduceOptions opts = null)
         {
-            bool messageIsString = typeof(TMessage) == typeof(string);
-            var produceRequest = new ProduceRequest
-            {
-                Topic = topic,
-                Value = messageIsString ? message as string : JsonSerializer.Serialize(message),
-            };
-
-            var stringContent = JsonSerializer.Serialize(produceRequest, _defaultJsonSerializerOptions);
-
-            HttpContent content = new StringContent(stringContent, System.Text.Encoding.UTF8, messageIsString ? "text/plain" : "application/json");
-            var httpResponseMessage = await _client.PostAsync("produce", content);
-            httpResponseMessage.EnsureSuccessStatusCode();
-            var response = await httpResponseMessage.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<ProduceResponse[]>(response, _defaultJsonSerializerOptions).FirstOrDefault();
+            return (await ProduceManyAsync(topic, new[] { message }, opts)).FirstOrDefault();
         }
 
         /// <summary>
@@ -63,7 +51,7 @@ namespace UpstashKafka
         /// <param name="messages"></param>
         /// <param name="opts"></param>
         /// <returns></returns>
-        public async Task<ProduceResponse[]> ProduceManyAsync<TMessage>(string topic, IList<TMessage> messages, ProduceOptions opts = null)
+        public async Task<ProduceResponse[]> ProduceManyAsync<TMessage>(string topic, IEnumerable<TMessage> messages, ProduceOptions opts = null)
         {
             bool messageIsString = typeof(TMessage) == typeof(string);
             var produceRequest = new List<ProduceRequest>();
@@ -76,13 +64,20 @@ namespace UpstashKafka
                 });
             }
 
+            string response = await SendRequest(messageIsString, produceRequest);
+            return JsonSerializer.Deserialize<ProduceResponse[]>(response, _defaultJsonSerializerOptions);
+        }
+
+        private async Task<string> SendRequest(bool messageIsString, List<ProduceRequest> produceRequest)
+        {
             var stringContent = JsonSerializer.Serialize(produceRequest, _defaultJsonSerializerOptions);
 
             HttpContent content = new StringContent(stringContent, System.Text.Encoding.UTF8, messageIsString ? "text/plain" : "application/json");
             var httpResponseMessage = await _client.PostAsync("produce", content);
             httpResponseMessage.EnsureSuccessStatusCode();
             var response = await httpResponseMessage.Content.ReadAsStringAsync();
-            return JsonSerializer.Deserialize<ProduceResponse[]>(response, _defaultJsonSerializerOptions);
+            return response;
         }
+
     }
 }

@@ -6,6 +6,9 @@
 # dotenv files
 .env
 
+# Mono directories
+.mono
+
 # User-specific files
 *.rsuser
 *.suo
