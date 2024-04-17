@@ -16,26 +16,9 @@ public class UpstashKafkaTests
     /// <exception cref="ArgumentNullException"></exception>
     public UpstashKafkaTests()
     {
-        var root = Directory.GetCurrentDirectory();
-        var dotenv = Path.Combine(root, ".env");
-        DotEnv.Load(dotenv);
-
-        var config = new ConfigurationBuilder()
-                    .AddEnvironmentVariables()
-                    .Build();
-        var env = config.AsEnumerable().ToDictionary(x => x.Key, x => x.Value);
-        if (!env.TryGetValue("UPSTASH_KAFKA_REST_URL", out _upstashUrl!))
-        {
-            throw new ArgumentNullException("UPSTASH_KAFKA_REST_URL", "Please provide the Upstash Kafka REST URL via the environment variable UPSTASH_KAFKA_REST_URL.");
-        }
-        if (!env.TryGetValue("UPSTASH_KAFKA_REST_USERNAME", out _upstashUsername!))
-        {
-            throw new ArgumentNullException("UPSTASH_KAFKA_REST_USERNAME", "Please provide the Upstash Kafka REST username via the environment variable UPSTASH_KAFKA_REST_USERNAME.");
-        }
-        if (!env.TryGetValue("UPSTASH_KAFKA_REST_PASSWORD", out _upstashPassword!))
-        {
-            throw new ArgumentNullException("UPSTASH_KAFKA_REST_PASSWORD", "Please provide the Upstash Kafka REST password via the environment variable UPSTASH_KAFKA_REST_PASSWORD.");
-        }
+        _upstashUrl = "https://kafka-rest-proxy.upstash.com";
+        _upstashUsername = "username";
+        _upstashPassword = "password";
     }
 
     [Fact]
@@ -90,32 +73,5 @@ public class UpstashKafkaTests
 
         // Assert
         Assert.NotNull(kafka);
-    }
-
-    [Fact]
-    public void Kafka_ShouldHaveInternalProducerProduceMessageToTopic()
-    {
-        // Arrange
-        var settings = new UpstashSettings(_upstashUrl, _upstashUsername, _upstashPassword);
-        using var kafka = new Kafka(settings);
-        var producer = kafka.Producer;
-
-        // Act
-        var message = new Message("Hello, Upstash Kafka!");
-        var result = producer.ProduceAsync("test-topic", message);
-
-        // Assert
-        Assert.NotNull(result);
-        // Assert.True(result.Success);
-    }
-}
-
-internal class Message
-{
-    private string v;
-
-    public Message(string v)
-    {
-        this.v = v;
     }
 }

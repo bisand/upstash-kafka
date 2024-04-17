@@ -11,13 +11,13 @@ public static class DotEnv
         {
             var parts = line.Split(
                 '=',
-                1,
+                2,
                 StringSplitOptions.RemoveEmptyEntries);
 
             if (parts.Length != 2)
                 continue;
 
-            Environment.SetEnvironmentVariable(parts[0], parts[1]);
+            Environment.SetEnvironmentVariable(parts[0], parts[1].Trim(['"', ' ']));
         }
     }
 }

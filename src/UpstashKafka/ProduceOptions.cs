@@ -12,11 +12,11 @@ namespace UpstashKafka
         /// The partition to produce to.
         /// Will be assigned by kafka if left empty.
         /// </summary>
-        public int Partition { get; set; }
+        public int? Partition { get; set; }
         /// <summary>
         /// The timestamp for the message.
         /// </summary>
-        public TimeSpan Timestamp { get; set; }
+        public TimeSpan? Timestamp { get; set; }
         /// <summary>
         /// The key for the message.
         /// </summary>
@@ -25,10 +25,5 @@ namespace UpstashKafka
         /// The headers for the message.
         /// </summary>
         public IDictionary<string, string> Headers { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ProduceOptions"/> class.
-        /// </summary>
-        public ProduceOptions() => Headers = new Dictionary<string, string>();
     };
 }
