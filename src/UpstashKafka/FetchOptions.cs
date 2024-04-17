@@ -1,5 +1,8 @@
 namespace UpstashKafka
 {
+    /// <summary>
+    /// Represents the fetch options.
+    /// </summary>
     public class FetchOptions
     {
         /// <summary>
@@ -11,7 +14,7 @@ namespace UpstashKafka
         /// 
         /// Default: true
         /// </summary>
-        bool? parallel;
+        public bool? Parallel { get; set; }
     };
 
 }

@@ -8,22 +8,22 @@ namespace UpstashKafka
         /// <summary>
         /// The topics to consume from.
         /// </summary>
-        string[] topics;
+        public string[] Topics { get; set; }
         /// <summary>
         /// Defines the time to wait at most for the fetch request in milliseconds.
         /// It's optional and its default value 1000.
         /// </summary>
-        int? timeout;
+        public int? Timeout { get; set; }
         /// <summary>
         /// If true, the consumer's offset will be periodically committed in the background.
         /// </summary>
-        bool? autoCommit;
+        public bool? AutoCommit { get; set; }
         /// <summary>
         /// The frequency in milliseconds that the consumer offsets are auto-committed to Kafka
         /// if auto commit is enabled.
         /// Default is 5000.
         /// </summary>
-        int? autoCommitInterval;
+        public int? AutoCommitInterval { get; set; }
         /// <summary>
         /// What to do when there is no initial offset in Kafka or if the current
         /// offset does not exist any more on the server. Default value is `latest`.
@@ -34,7 +34,7 @@ namespace UpstashKafka
         /// 
         /// `none`: Throw exception to the consumer if no previous offset is found for the consumer's group.
         /// </summary>
-        KafkaAutoOffsetReset? autoOffsetReset; //"earliest" | "latest" | "none";
+        public KafkaAutoOffsetReset? AutoOffsetReset { get; set; } //"earliest" | "latest" | "none";
     }
 
 }

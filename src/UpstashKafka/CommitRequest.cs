@@ -8,7 +8,7 @@ namespace UpstashKafka
         /// <summary>
         /// Commits the last consumed messages if left empty.
         /// </summary>
-        public TopicPartitionOffset[] offset { get; set; }
+        public TopicPartitionOffset[] Offset { get; set; }
     };
 
 }
