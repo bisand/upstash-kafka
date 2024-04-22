@@ -1,4 +1,7 @@
-namespace UpstashKafka
+using Upstash.Kafka.Client.Consumers.Models;
+using Upstash.Kafka.Client.Consumers.Requests;
+
+namespace Upstash.Kafka.Client
 {
     /// <summary>
     /// Represents a committed request.

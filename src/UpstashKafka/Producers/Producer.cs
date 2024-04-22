@@ -4,8 +4,11 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Upstash.Kafka.Client.Producers.Models;
+using Upstash.Kafka.Client.Producers.Requests;
+using Upstash.Kafka.Client.Producers.Responses;
 
-namespace UpstashKafka
+namespace Upstash.Kafka.Client.Producers
 {
     /// <summary>
     /// Represents the Kafka producer.

@@ -1,4 +1,4 @@
-namespace UpstashKafka
+namespace Upstash.Kafka.Client
 {
     /// <summary>
     /// Represents the settings for Upstash.

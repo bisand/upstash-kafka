@@ -1,6 +1,4 @@
-using UpstashKafka;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.EnvironmentVariables;
+using Upstash.Kafka.Client;
 
 namespace UpstashKafka.Tests;
 

@@ -1,4 +1,6 @@
-namespace UpstashKafka
+using Upstash.Kafka.Client.Producers.Models;
+
+namespace Upstash.Kafka.Client.Producers.Requests
 {
     /// <summary>
     /// Request payload to produce a message to a topic.

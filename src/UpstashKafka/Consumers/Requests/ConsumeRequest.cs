@@ -1,4 +1,4 @@
-namespace UpstashKafka
+namespace Upstash.Kafka.Client.Consumers.Requests
 {
     /// <summary>
     /// Represents a consume request.

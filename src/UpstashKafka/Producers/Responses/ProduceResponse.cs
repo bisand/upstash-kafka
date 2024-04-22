@@ -1,4 +1,4 @@
-namespace UpstashKafka
+namespace Upstash.Kafka.Client.Producers.Responses
 {
     /// <summary>
     /// Represents the options for producing a message.

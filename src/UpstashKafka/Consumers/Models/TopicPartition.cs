@@ -1,4 +1,4 @@
-namespace UpstashKafka
+namespace Upstash.Kafka.Client.Consumers.Models
 {
     /// <summary>
     /// Represents a topic and partition.

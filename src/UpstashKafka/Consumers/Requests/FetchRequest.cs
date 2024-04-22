@@ -1,4 +1,6 @@
-namespace UpstashKafka
+using Upstash.Kafka.Client.Consumers.Models;
+
+namespace Upstash.Kafka.Client.Consumers.Requests
 {
     /// <summary>
     /// Represents a fetch request.

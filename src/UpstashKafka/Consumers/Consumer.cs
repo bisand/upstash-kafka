@@ -1,6 +1,6 @@
 using System.Net.Http;
 
-namespace UpstashKafka
+namespace Upstash.Kafka.Client.Consumers
 {
     /// <summary>
     /// Represents the Kafka consumer.

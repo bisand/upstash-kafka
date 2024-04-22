@@ -1,4 +1,4 @@
-namespace UpstashKafka
+namespace Upstash.Kafka.Client
 {
     /// <summary>
     /// What to do when there is no initial offset in Kafka or if the current

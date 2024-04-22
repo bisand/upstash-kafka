@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using Upstash.Kafka.Client.Consumers;
+using Upstash.Kafka.Client.Producers;
 
-namespace UpstashKafka
+namespace Upstash.Kafka.Client
 {
     /// <summary>
     /// Represents the settings for Upstash.

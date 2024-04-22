@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace UpstashKafka
+namespace Upstash.Kafka.Client.Producers.Models
 {
     /// <summary>
     /// Represents the options for producing a message.

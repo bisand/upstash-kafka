@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Configuration;
+using Upstash.Kafka.Client;
 
 namespace UpstashKafka.Tests.Integration;
 
