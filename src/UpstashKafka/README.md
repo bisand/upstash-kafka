@@ -8,15 +8,15 @@ C# implementation of a client library using Upstash HTTP/REST api, suited for si
 > **Disclaimer**!  
 This library is **not** associated with Upstash in any way, but it is inspired by the [javascript implementation from Upstash](https://github.com/upstash/upstash-kafka). Some of the text in this readme is borrowed from there.
 
-# Installation
+## Installation
 
 ```bash
 dotnet add package Upstash.Kafka.Client
 ```
 
-# Quickstart
+## Quickstart
 
-## Auth
+### Auth
 
 1. Go to [upstash](https://console.upstash.com/kafka) and select your database.
 2. Copy the `REST API` secrets at the bottom of the page
@@ -36,7 +36,7 @@ using (var kafka = new Kafka(settings))
 }
 ```
 
-## Produce a single message
+### Produce a single message
 
 ```csharp
 var producer = kafka.Producer;
@@ -45,7 +45,7 @@ var message = new { Amount = 108, Name = "Product 1" };
 var result = await producer.ProduceAsync("test-topic", message);
 ```
 
-## Produce multiple messages.
+### Produce multiple messages.
 
 The same options from the example above can be set for every message.
 
@@ -90,15 +90,15 @@ You can also manage offsets manually by using `Consumer.fetch`
 //TODO: Write Example
 ```
 
-# Contributing
+## Contributing
 
-## Requirements
-
-
-## Setup
+### Requirements
 
 
-## Running tests
+### Setup
+
+
+### Running tests
 
 ```bash
 ```
